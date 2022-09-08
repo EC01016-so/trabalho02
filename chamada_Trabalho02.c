@@ -8,50 +8,40 @@
 
 
 int main(int argc, char **argv){
+    // Criando variavel int 
     int lista[2], concatena;
+    // Criando variable char
+    // variavel que recebe os nomes dos arquivos
     char *lista_07_09 = "lista_07_09.txt";
     char *lista_08_09 = "lista_08_09.txt";
+    /* variavel que recebe o nome de arquivo que vai ser criado no 
+    final do excusao
+    */
     char *concatenado = "arquivo_concatenado.txt";
-    int meu;
     int tamanho = 2;
-    char c[50];
-    
+    char buf[50];
+    // Abrindo o arquivo com somente letura
     lista[0] = open(lista_07_09, O_RDONLY);
     lista[1] = open(lista_08_09, O_RDONLY);
+    /*Abrir o arquivo com somente escrever, acrescentar e se o arquivo naõ foi 
+    crear novo arquivo   */
     concatena = open(concatenado, O_WRONLY |O_APPEND | O_CREAT, 0644);
-    //printf("lista_1= %d", lista_1);
+
+    // um loop para escerver na arquivo "arquivo_concatenado.txt"
     if (lista[0] != -1 || lista[1] != -1 || concatena != -1){
         for (int i=0; i<tamanho; i++){
-            read(lista[i], c, sizeof(c));
-            write(concatena, ("%c \n", c), strlen(c)); 
+            read(lista[i], buf, sizeof(buf));
+            write(concatena, ("%c \n", buf), strlen(buf)); 
             lseek(concatena, 0, SEEK_END);
-            printf("lista_1: %d %d\n",sizeof(c), lista[i]);
         }
+        // fechar os arquivos que foram abertos 
         close(lista[0]);
         close(lista[1]);
         close(concatena);
     }else{
-        printf("open failed\n");
+        // print na telar se o corre erros 
+        printf("Falha ao abrir arquivo\n");
     }
-
-    /*
-    //char buf[4096];
-    //char *c = (char *) calloc(100, sizeof(char)); 
-    //char msg[50] = "como voce esta";
-    //int creat(const char *nosso_arquivo, mod);
-    lista_1 = open("lista_07_09.txt", O_RDONLY, 0);
-    //printf("fd = %d", l);
-    if (lista_1!= -1){
-        printf("list_07_09.txt foi abrir com sucesso\n");
-        write(STDOUT_FILENO, lista_1, sizeof(lista_1));
-        //write(fd, msg, sizeof(msg));
-        lseek(lista_1, 0, SEEK_SET);
-        lista = read(lista_1, c, 10);
-        printf("\n %s foi escribir com sucesso\n",  lista);
-        close(lista_1);
-    }else{
-        printf("list_07_09.txt foi abrir com erros\n");
-    }*/
 
     return 0;
 }
