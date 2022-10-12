@@ -6,7 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 
-// 
+// Declaração da função "string_anexar"
 char *string_anexar(char *str1, char *str2);
 
 int main() {
