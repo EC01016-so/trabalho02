@@ -28,8 +28,9 @@ int main(int argc, char **argv){
     // Criando novo arquivo para a concatenação
     concatena = open(concatenado, O_WRONLY |O_APPEND | O_CREAT, 0644);
 
-    // Um loop para escrever no arquivo "arquivo_concatenado.txt"
-    if (lista[0] != -1 || lista[1] != -1 || concatena != -1){
+      /* Condição que verifica se os arquivos foram abertos e se o 
+      arquivo concatenado foi criado */
+      if (lista[0] != -1 || lista[1] != -1 || concatena != -1){
         for (int i=0; i<2; i++){
             read(lista[i], buf, sizeof(buf));
             write(concatena, ("%c \n", buf), strlen(buf)); 
@@ -57,7 +58,7 @@ int main(int argc, char **argv){
         
 
     }else{
-        // Exibe na tela caso ocorra erro ao abrir os arquivos
+        // Exibe na tela caso ocorra erro
         printf("Falha ao abrir arquivo\n");
     }
 
