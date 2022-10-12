@@ -27,7 +27,7 @@ int main(int argc, char **argv){
     crear novo arquivo   */
     concatena = open(concatenado, O_WRONLY |O_APPEND | O_CREAT, 0644);
 
-    // um loop para escerver na arquivo "arquivo_concatenado.txt"
+    // um loop para escrever na arquivo "arquivo_concatenado.txt"
     if (lista[0] != -1 || lista[1] != -1 || concatena != -1){
         for (int i=0; i<tamanho; i++){
             read(lista[i], buf, sizeof(buf));
@@ -38,6 +38,22 @@ int main(int argc, char **argv){
         close(lista[0]);
         close(lista[1]);
         close(concatena);
+
+        printf("concatena de 'lista_07_09.txt' e 'lista_08_09.txt' foi Sucesso\n\n");
+        printf("Arquivo 'lista_07_09.txt'\n");
+        printf("----------------------------------------------------------------------------------------\n");
+        system("cat lista_07_09.txt");
+        printf("****************************************************************************************\n \n");
+        printf("Arquivo 'lista_08_09.txt'\n");
+        printf("----------------------------------------------------------------------------------------\n");
+        system("cat lista_08_09.txt");
+        printf("****************************************************************************************\n \n");
+        printf(" Arquivo concatenado\n");
+        printf("----------------------------------------------------------------------------------------\n");
+        system("cat arquivo_concatenado.txt");
+        printf("****************************************************************************************\n \n");
+        
+
     }else{
         // print na telar se o corre erros 
         printf("Falha ao abrir arquivo\n");
