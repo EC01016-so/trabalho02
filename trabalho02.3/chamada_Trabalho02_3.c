@@ -80,7 +80,7 @@ int main() {
       //"O arquivo com o nome anterior (sem a string "L") é excluído"
       if (remove(argls1) == 0) {
       } else {
-        printf("Erro no exclusão do arquivo.");
+        printf("Erro na exclusão do arquivo.");
       }
     }
     // É feita a limpeza da memória para liberar o espaço alocado na memória
